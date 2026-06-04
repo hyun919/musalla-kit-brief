@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Musalla Kit — Project Brief</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sand:#F5EDD8;--sand-dark:#E8D9B8;--ink:#1A1208;
+  --gold:#C8922A;--gold-light:#E8B84B;--rust:#8B3A1F;
+  --sage:#4A6741;--cream:#FAF6EC;--muted:#7A6A50;
+  --bd:rgba(200,146,42,0.22);
+}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+
+.page{width:100%;max-width:900px;margin:0 auto;padding:0 0 4rem;}
+
+/* HERO */
+.hero{
+  background:var(--ink);color:var(--sand);
+  padding:3.5rem 3rem 3rem;position:relative;overflow:hidden;
+}
+.hero-arch{
+  position:absolute;right:-4%;top:8%;width:42%;height:130%;
+  border:1.5px solid rgba(200,146,42,0.18);
+  border-radius:50% 50% 0 0/55% 55% 0 0;pointer-events:none;
+}
+.hero-arch2{
+  position:absolute;right:3%;top:15%;width:32%;height:110%;
+  border:1px solid rgba(200,146,42,0.09);
+  border-radius:50% 50% 0 0/55% 55% 0 0;pointer-events:none;
+}
+.hero-label{
+  font-family:'DM Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:1.2rem;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,6vw,5rem);font-weight:900;
+  line-height:0.95;letter-spacing:-0.02em;margin-bottom:1.2rem;
+}
+.hero-title .acc{color:var(--gold-light);}
+.hero-title .lit{font-weight:400;font-style:italic;font-size:0.65em;}
+.hero-tag{font-size:0.95rem;color:rgba(245,237,216,0.65);margin-bottom:2rem;max-width:420px;}
+.hero-pills{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.pill{
+  padding:0.4rem 1rem;border:1px solid rgba(200,146,42,0.5);
+  border-radius:2rem;font-family:'DM Mono',monospace;
+  font-size:0.7rem;letter-spacing:0.1em;color:var(--gold-light);
+}
+.hero-meta{
+  position:absolute;bottom:2rem;right:2.5rem;text-align:right;
+}
+.hero-meta p{font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(245,237,216,0.45);letter-spacing:0.08em;line-height:1.9;}
+
+/* DIVIDER */
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.25;margin:0 2rem;}
+
+/* SECTION */
+.sec{padding:3rem 3rem 0;}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem;
+}
+.sec-label::after{content:'';display:block;width:1.5rem;height:1px;background:var(--gold);opacity:0.5;}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;
+  line-height:1.15;margin-bottom:1.8rem;
+}
+.sec-sub{font-size:0.88rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6;}
+
+/* EASY CARDS */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.full{grid-column:1/-1;}
+
+.card{
+  background:var(--sand);border:1px solid var(--bd);
+  border-radius:0.9rem;padding:1.6rem;position:relative;overflow:hidden;
+}
+.card::before{
+  content:attr(data-n);position:absolute;top:0.8rem;right:1.2rem;
+  font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;
+  color:var(--gold);opacity:0.1;line-height:1;
+}
+.card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.7rem;color:var(--rust);}
+.card p{font-size:0.84rem;color:var(--ink);line-height:1.6;}
+
+/* QUOTE */
+.quote{
+  background:var(--ink);color:var(--sand);
+  border-radius:0.7rem;padding:1.2rem 1.6rem;margin:1.2rem 0;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:0.95rem;line-height:1.6;border-left:3px solid var(--gold);
+}
+
+/* PAIN TABLE */
+.pain-t{width:100%;border-collapse:collapse;font-size:0.83rem;margin-top:1.2rem;}
+.pain-t th{
+  text-align:left;padding:0.65rem 0.9rem;
+  background:var(--ink);color:var(--sand);
+  font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;font-weight:400;
+}
+.pain-t th:first-child{border-radius:0.5rem 0 0 0;}
+.pain-t th:last-child{border-radius:0 0.5rem 0 0;}
+.pain-t td{padding:0.8rem 0.9rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.5;}
+.pain-t tr:last-child td{border-bottom:none;}
+.pain-t tr:nth-child(even) td{background:rgba(200,146,42,0.04);}
+.tag{
+  display:inline-block;background:var(--gold);color:white;
+  font-family:'DM Mono',monospace;font-size:0.6rem;
+  padding:0.15rem 0.45rem;border-radius:0.2rem;font-weight:500;letter-spacing:0.04em;
+}
+
+/* GSF */
+.gsf-card{border:1px solid var(--bd);border-radius:0.9rem;padding:1.6rem 1.5rem;transition:transform .22s,box-shadow .22s;}
+.gsf-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,146,42,0.1);}
+.gsf-card.g{background:linear-gradient(135deg,#FAF6EC 60%,rgba(74,103,65,0.07));}
+.gsf-card.s{background:linear-gradient(135deg,#FAF6EC 60%,rgba(200,146,42,0.07));}
+.gsf-card.f{background:linear-gradient(135deg,#FAF6EC 60%,rgba(139,58,31,0.07));}
+.gsf-letter{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;line-height:1;margin-bottom:0.3rem;}
+.g .gsf-letter{color:var(--sage);}
+.s .gsf-letter{color:var(--gold);}
+.f .gsf-letter{color:var(--rust);}
+.gsf-name{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:0.7rem;}
+.gsf-card h3{font-size:0.95rem;font-weight:500;margin-bottom:0.5rem;}
+.gsf-card p{font-size:0.8rem;color:var(--muted);line-height:1.55;}
+.gsf-items{margin-top:0.8rem;list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.gsf-items li{font-size:0.78rem;color:var(--ink);padding-left:0.9rem;position:relative;}
+.gsf-items li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:0.55;}
+
+/* PROTO */
+.proto{border:1px solid var(--bd);border-radius:0.9rem;overflow:hidden;margin-top:1.2rem;}
+.proto-row{display:grid;grid-template-columns:180px 1fr;}
+.proto-row+.proto-row{border-top:1px solid var(--bd);}
+.proto-t{background:var(--sand-dark);padding:0.85rem 1.2rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--rust);display:flex;align-items:center;}
+.proto-d{padding:0.85rem 1.2rem;font-size:0.84rem;color:var(--ink);display:flex;align-items:center;}
+
+/* MARKET */
+.mkt-card{background:var(--ink);color:var(--sand);border-radius:0.9rem;padding:1.6rem;position:relative;overflow:hidden;}
+.mkt-card::after{content:'';position:absolute;bottom:-16px;right:-16px;width:64px;height:64px;background:var(--gold);opacity:0.1;border-radius:50%;}
+.mkt-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light);line-height:1;margin-bottom:0.4rem;}
+.mkt-lbl{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;color:rgba(245,237,216,0.45);text-transform:uppercase;margin-bottom:0.6rem;}
+.mkt-card p{font-size:0.78rem;color:rgba(245,237,216,0.65);line-height:1.55;}
+
+/* TIER */
+.tier{border:1px solid var(--bd);border-radius:0.9rem;padding:1.6rem;}
+.tier.hl{background:var(--gold);color:white;border-color:var(--gold);}
+.tier-badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.7rem;opacity:0.65;}
+.tier-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:0.6rem;}
+.tier p{font-size:0.82rem;line-height:1.6;opacity:0.78;}
+
+/* COMP TABLE */
+.comp{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:1.2rem;}
+.comp th{background:var(--ink);color:var(--sand);padding:0.7rem 0.9rem;text-align:left;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;font-weight:400;}
+.comp td{padding:0.8rem 0.9rem;border-bottom:1px solid var(--bd);color:var(--ink);}
+.comp tr:last-child td{border-bottom:none;}
+.comp .hl{color:var(--gold);font-weight:500;}
+
+/* FILM */
+.film{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--bd);border-radius:0.9rem;overflow:hidden;margin-top:1.5rem;}
+.film-step{padding:1.5rem 1.2rem;border-right:1px solid var(--bd);}
+.film-step:last-child{border-right:none;}
+.film-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);opacity:0.2;line-height:1;margin-bottom:0.4rem;}
+.film-step p{font-size:0.8rem;color:var(--ink);line-height:1.55;}
+
+/* SLOGAN BAND */
+.slogan-band{
+  background:var(--ink);color:var(--sand);
+  padding:4rem 3rem;text-align:center;
+  margin:3rem 0 0;position:relative;overflow:hidden;
+}
+.slogan-band::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(200,146,42,0.13),transparent 70%);
+  pointer-events:none;
+}
+.slogan-kr{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.3rem,3vw,2rem);line-height:1.45;
+  margin-bottom:1rem;color:var(--gold-light);
+}
+.slogan-en{font-size:0.88rem;color:rgba(245,237,216,0.45);letter-spacing:0.05em;margin-bottom:2rem;}
+.slogan-one{
+  font-size:0.85rem;max-width:520px;margin:0 auto;
+  color:rgba(245,237,216,0.65);line-height:1.7;
+  padding:1.2rem 1.5rem;border:1px solid rgba(200,146,42,0.18);border-radius:0.7rem;
+}
+
+/* ROADMAP */
+.rm-item{display:grid;grid-template-columns:160px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--bd);align-items:start;}
+.rm-item:last-child{border-bottom:none;}
+.rm-date{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--gold);padding-top:0.1rem;}
+.rm-item p{font-size:0.87rem;color:var(--ink);}
+
+/* RISK */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.risk{background:var(--sand);border-radius:0.7rem;padding:1.3rem;border-left:3px solid var(--rust);border-radius:0 0.7rem 0.7rem 0;}
+.risk-q{font-weight:500;font-size:0.84rem;margin-bottom:0.4rem;color:var(--rust);}
+.risk-a{font-size:0.8rem;color:var(--muted);line-height:1.55;}
+
+/* FOOTER */
+.footer{background:var(--sand-dark);padding:2rem 3rem;text-align:center;border-top:1px solid var(--bd);margin-top:3rem;}
+.footer p{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;line-height:1.9;}
+
+@media(max-width:640px){
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;}
+  .full{grid-column:1;}
+  .film{grid-template-columns:1fr 1fr;}
+  .proto-row{grid-template-columns:1fr;}
+  .risk-grid{grid-template-columns:1fr;}
+  .rm-item{grid-template-columns:1fr;gap:0.4rem;}
+  .hero{padding:2.5rem 1.5rem 2rem;}
+  .sec{padding:2rem 1.5rem 0;}
+  .hero-meta{display:none;}
+  .hero-arch,.hero-arch2{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-arch"></div>
+  <div class="hero-arch2"></div>
+  <p class="hero-label">소비자행동심리 5조 · 글로벌 캠페인 · 2026</p>
+  <h1 class="hero-title">
+    Musalla<br>
+    <span class="acc">Kit</span><br>
+    <span class="lit">Guide · Supply · Flow</span>
+  </h1>
+  <p class="hero-tag">안내하고, 채우고, 이어준다 — 예배 사이, 하루 다섯 번.</p>
+  <div class="hero-pills">
+    <div class="pill">Guide</div>
+    <div class="pill">Supply</div>
+    <div class="pill">Flow</div>
+    <div class="pill">🇸🇦 사우디아라비아</div>
+  </div>
+  <div class="hero-meta">
+    <p>네이버랩스 Rookie 2 · 실내</p>
+    <p>발표 2026. 6. 16–18</p>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="sec">
+  <p class="sec-label">개요</p>
+  <h2 class="sec-title">사우디 건물의 하루는<br>다섯 번 리셋된다</h2>
+  <div class="grid2">
+    <div class="card" data-n="①">
+      <h3>기도 문화 — 먼저 이것만</h3>
+      <p>무슬람은 하루 5번 기도하고, 쇼핑몰·회사·공항 안에도 기도실(무슬라)이 당연히 있습니다. 기도 전 wudu — 손·얼굴·발을 물로 씻습니다.</p>
+    </div>
+    <div class="card" data-n="②">
+      <h3>성별 분리 & 아잔 리듬</h3>
+      <p>남·여 기도 공간이 나뉘고, 여성 구역은 남성 직원이 들어가기 어렵습니다. 아잔마다 건물 리듬이 "기도 → 복귀"로 하루 5번 반복됩니다.</p>
+    </div>
+    <div class="card full" data-n="">
+      <div class="quote">사우디 건물 FM은 "청소만"이 아니라, 하루 5번 돌아오는 기도실 운영과 맞물려 있습니다.</div>
+      <p style="font-size:.87rem;">Musalla Kit는 <strong>Salah Interval (예배 사이 20~40분)</strong>에 네이버랩스 실내 로봇 루키가 <strong>Guide / Supply / Flow</strong> 세 서비스를 제공하는 B2B FM 패키지입니다.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:3rem;"></div>
+
+<!-- PAIN -->
+<div class="sec">
+  <p class="sec-label">Pain Point</p>
+  <h2 class="sec-title">Wudu Exit Gap</h2>
+  <p class="sec-sub">기도실이 "없어서"가 아닙니다. 있는데, 예배 직후·다음 예배 전에 정리가 안 되는 것입니다.</p>
+  <table class="pain-t">
+    <thead>
+      <tr><th>문제</th><th>쉬운 설명</th><th>왜 반복되나</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag">A 안전·정결</span></td>
+        <td>wudu 직후 복도 바닥 젖음 → 미끄러짐 위험</td>
+        <td>하루 <strong>5번</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tag">B 시간</span></td>
+        <td>예배 후 20~40분 안에 정리해야 하는데 FM은 다른 층</td>
+        <td>다음 기도 전 또 몰림</td>
+      </tr>
+      <tr>
+        <td><span class="tag">C 성별</span></td>
+        <td>휴지·손소독·매트가 비면 남성 관리인 진입 부담</td>
+        <td>성별·문화 장벽</td>
+      </tr>
+      <tr>
+        <td><span class="tag">D 혼잡·분실</span></td>
+        <td>신발 벗고 기도 → 나올 때 헷갈림, 핸드폰·지갑 분실</td>
+        <td>하루 <strong>5번</strong> 피크</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="quote" style="margin-top:1.5rem;">예배 사이 짧은 시간에, 무슬라(특히 wudu 나오는 복도)를 사람 손으로만 돌리기엔 빡세다.</div>
+</div>
+
+<div class="div" style="margin-top:3rem;"></div>
+
+<!-- SOLUTION -->
+<div class="sec">
+  <p class="sec-label">솔루션</p>
+  <h2 class="sec-title">Musalla Kit</h2>
+  <p class="sec-sub"><strong>중요:</strong> 루키는 바닥을 말리거나 청소하는 로봇이 아닙니다. 시간에 맞춰 필요한 것을 갖다 놓고, 안내하고, 분실물을 옮깁니다.</p>
+  <div class="grid3">
+    <div class="gsf-card g">
+      <div class="gsf-letter">G</div>
+      <div class="gsf-name">Guide · 안내</div>
+      <h3>동선 & 안전 안내</h3>
+      <p>젖은 복도·무슬라 입구 HRI로 안내합니다.</p>
+      <ul class="gsf-items">
+        <li>Slow · Wet exit 화면 메시지</li>
+        <li>Next salah 카운트다운</li>
+        <li>혼잡 통제 X — 동선 안내 O</li>
+      </ul>
+    </div>
+    <div class="gsf-card s">
+      <div class="gsf-letter">S</div>
+      <div class="gsf-name">Supply · 보급</div>
+      <h3>Interval 키트 배송</h3>
+      <p>예배 후 20~40분에 키트를 service point에 배송합니다.</p>
+      <ul class="gsf-items">
+        <li>Exit Kit: 흡수매트, 미끄럼 표지, 타월</li>
+        <li>Restock Kit: 휴지, 손소독, 매트 커버</li>
+        <li>여성 wing 전용 service point</li>
+      </ul>
+    </div>
+    <div class="gsf-card f">
+      <div class="gsf-letter">F</div>
+      <div class="gsf-name">Flow · 흐름</div>
+      <h3>동선 & 분실물 이송</h3>
+      <p>신발·퇴출 HRI 안내 + 분실물 이송합니다.</p>
+      <ul class="gsf-items">
+        <li>신발 동선 HRI 안내</li>
+        <li>Found box → 안내 데스크 이송</li>
+        <li>등록·보관은 FM 담당</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin:2.5rem 0 0.3rem;">운영 프로토콜</h3>
+  <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0;">Umm al-Qura 기도 API 연동 · 자동 스케줄</p>
+  <div class="proto">
+    <div class="proto-row">
+      <div class="proto-t">T-10 ~ 예배 중</div>
+      <div class="proto-d">대기 — wudu rush · 무슬라 내부 진입 안 함</div>
+    </div>
+    <div class="proto-row">
+      <div class="proto-t">예배 종료 + Interval</div>
+      <div class="proto-d"><strong>Guide · Supply · Flow</strong> 전체 동작</div>
+    </div>
+    <div class="proto-row">
+      <div class="proto-t">다음 T-10</div>
+      <div class="proto-d">Roboport 복귀 · 충전</div>
+    </div>
+    <div class="proto-row">
+      <div class="proto-t">연간 횟수</div>
+      <div class="proto-d">5 cycle × 365일 = 약 <strong>1,825회</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:3rem;"></div>
+
+<!-- MARKET -->
+<div class="sec">
+  <p class="sec-label">시장 규모</p>
+  <h2 class="sec-title">TAM · SAM · SOM</h2>
+  <div class="grid3">
+    <div class="mkt-card">
+      <div class="mkt-lbl">TAM · 사우디 상업 부동산</div>
+      <div class="mkt-num">$710억</div>
+      <p>2030년 추정 (CAGR 12.4%) · 2024년 약 $349억</p>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-lbl">FM 시장 · Soft Services</div>
+      <div class="mkt-num">74%</div>
+      <p>FM 시장 내 Soft Services 비중 · 2024년 약 $260~480억</p>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-lbl">SAM · 보수적 추정</div>
+      <div class="mkt-num">$1~6천만</div>
+      <p>무슬라 wing 200~400개소 · site당 연 $5~15만</p>
+    </div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:3rem;"></div>
+
+<!-- B2B -->
+<div class="sec">
+  <p class="sec-label">B2B · 수익 모델</p>
+  <h2 class="sec-title">패키지 티어</h2>
+  <div class="grid3">
+    <div class="tier">
+      <div class="tier-badge">Standard</div>
+      <div class="tier-name">Standard</div>
+      <p>Supply + Interval 스케줄<br>타깃: 오피스 타워</p>
+    </div>
+    <div class="tier hl">
+      <div class="tier-badge">추천</div>
+      <div class="tier-name">Women+</div>
+      <p>Standard + Restock Kit (여성 wing)<br>타깃: 대형 몰</p>
+    </div>
+    <div class="tier">
+      <div class="tier-badge">Full</div>
+      <div class="tier-name">Full</div>
+      <p>+ HRI Guide · Flow 전체<br>타깃: Cenomi급</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin:2.5rem 0 0.3rem;">Jahez · 택배와 다른 점</h3>
+  <table class="comp">
+    <thead>
+      <tr><th></th><th>Jahez</th><th>택배·Parcelat</th><th>Musalla Kit</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>대상</td><td>음식 배달</td><td>집·락커</td><td class="hl">건물 무슬라</td></tr>
+      <tr><td>리듬</td><td>즉시·20분</td><td>주문형</td><td class="hl">Salah Interval 5회/일</td></tr>
+      <tr><td>역할</td><td>배달</td><td>배달</td><td class="hl">Guide · Supply · Flow</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SLOGAN -->
+<div class="slogan-band">
+  <p style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:rgba(200,146,42,0.55);text-transform:uppercase;margin-bottom:1.2rem;">Big Idea</p>
+  <div class="slogan-kr">「안내하고, 채우고, 이어준다 —<br>예배 사이, 하루 다섯 번.」</div>
+  <div class="slogan-en">Between prayers, the room gets what it needs.</div>
+  <div class="slogan-one">사우디 건물은 하루 다섯 번 기도로 리셋된다.<br>Musalla Kit는 그 사이, 무슬라를 준비하는 루키다.</div>
+</div>
+
+<!-- CAMPAIGN -->
+<div class="sec" style="padding-top:3rem;">
+  <p class="sec-label">캠페인</p>
+  <h2 class="sec-title">15초 Film</h2>
+  <div class="film">
+    <div class="film-step">
+      <div class="film-n">01</div>
+      <p>마그립 직후 여성 wudu 퇴출 — 복도 바닥 물기</p>
+    </div>
+    <div class="film-step">
+      <div class="film-n">02</div>
+      <p>Interval: 루키 service hatch에 Kit 배송</p>
+    </div>
+    <div class="film-step">
+      <div class="film-n">03</div>
+      <p>HRI 화면: Slow · Wet exit 안내</p>
+    </div>
+    <div class="film-step">
+      <div class="film-n">04</div>
+      <p>자막: Musalla Kit — Naver Labs Rookie</p>
+    </div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:3rem;"></div>
+
+<!-- ROADMAP -->
+<div class="sec">
+  <p class="sec-label">로드맵</p>
+  <h2 class="sec-title">일정</h2>
+  <div style="margin-top:1rem;">
+    <div class="rm-item"><div class="rm-date">5/28 – 6/5</div><p>Pain · B2B · Musalla Kit 확정</p></div>
+    <div class="rm-item"><div class="rm-date">6/6 – 6/10</div><p>슬라이드 · 15초 스토리보드 · FAQ</p></div>
+    <div class="rm-item"><div class="rm-date">6/11 – 6/15</div><p>리허설 · 심사 Q&A</p></div>
+    <div class="rm-item"><div class="rm-date">6/16 – 6/18</div><p><strong>발표 — 네이버랩스 브랜딩 심사</strong></p></div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin:2.5rem 0 0.5rem;">리스크 & FAQ</h3>
+  <div class="risk-grid">
+    <div class="risk">
+      <div class="risk-q">Q. 청소 로봇 아닌가요?</div>
+      <div class="risk-a">아닙니다. Interval Room Service — 배송 + HRI + 이송만 합니다.</div>
+    </div>
+    <div class="risk">
+      <div class="risk-q">Q. 종교적으로 민감하지 않나요?</div>
+      <div class="risk-a">예배 중·무슬라 카펫·의식 대행은 하지 않습니다. 복도·service point만 담당합니다.</div>
+    </div>
+    <div class="risk">
+      <div class="risk-q">Q. 왜 누리(실외)가 아닌가요?</div>
+      <div class="risk-a">Pain이 건물 안 wudu·무슬라에 있습니다. 루키(실내)가 맞습니다.</div>
+    </div>
+    <div class="risk">
+      <div class="risk-q">Q. Jahez와 뭐가 다른가요?</div>
+      <div class="risk-a">Jahez = B2B 점심·음식. Musalla Kit = 건물 무슬라·기도 Interval 전담.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>소비자행동심리 5조 · Musalla Kit · 네이버랩스 Rookie × 사우디</p>
+  <p style="opacity:.55;margin-top:.3rem;">참고: TechSci · Fortune Business Insights · Mordor Intelligence · Cenomi IR 등 공개 자료 기반. SAM은 팀 가정치.</p>
+</div>
+
+</div>
+</body>
+</html>
